@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import net.zuccha.a100days.a100daysofcode.databinding.ActivityMainBinding
+import net.zuccha.a100days.a100daysofcode.samplemodels.DaggerSampleComponent
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
+
+    private lateinit var message: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,5 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         // setup actionbar
         setSupportActionBar(binding.toolbar)
+
+        val maker = DaggerSampleComponent.builder().build().maker()
+        binding.message = maker.print()
     }
 }
