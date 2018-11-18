@@ -6,8 +6,8 @@ import dagger.Provides
 @Module
 class DripCoffeeModule {
     @Provides
-    fun provideHeater() = ElectricHeater()
+    fun provideHeater(): Heater = ElectricHeater()
 
     @Provides
-    fun providePump(pump: Thermosiphon) = pump
+    fun providePump(pump: Thermosiphon): Pump = pump
 }

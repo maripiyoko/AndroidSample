@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import net.zuccha.a100days.a100daysofcode.databinding.ActivityMainBinding
+import net.zuccha.a100days.a100daysofcode.di.coffee.DaggerCoffeeShopComponent
 import net.zuccha.a100days.a100daysofcode.samplemodels.DaggerSampleComponent
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupCoffeeMaker() {
         Log.d("DEBUG", "start coffee maker")
-
+        val maker = DaggerCoffeeShopComponent.builder().build().maker()
+        maker.brew()
     }
 }
