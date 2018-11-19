@@ -6,11 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import net.zuccha.a100days.a100daysofcode.databinding.ActivityMainBinding
+import net.zuccha.a100days.a100daysofcode.di.coffee.CoffeeShopComponent
 import net.zuccha.a100days.a100daysofcode.di.coffee.DaggerCoffeeShopComponent
+import net.zuccha.a100days.a100daysofcode.samplemodels.A
 import net.zuccha.a100days.a100daysofcode.samplemodels.DaggerSampleComponent
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+    @Inject lateinit var a: A
+
+    private lateinit var coffeeComponent: CoffeeShopComponent
     private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +31,19 @@ class MainActivity : AppCompatActivity() {
         binding.message = maker.print()
 
         setupCoffeeMaker()
+
+        injectMyself()
     }
 
     private fun setupCoffeeMaker() {
         Log.d("DEBUG", "start coffee maker")
-        val maker = DaggerCoffeeShopComponent.builder().build().maker()
+        coffeeComponent = DaggerCoffeeShopComponent.builder().build()
+        val maker = coffeeComponent.maker()
         maker.brew()
+    }
+
+    private fun injectMyself() {
+        coffeeComponent.inject(this)
+        a.print()
     }
 }
