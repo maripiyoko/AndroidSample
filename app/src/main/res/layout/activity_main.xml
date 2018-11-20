@@ -28,11 +28,22 @@
                     app:popupTheme="@style/AppTheme.PopupOverlay"/>
             </com.google.android.material.appbar.AppBarLayout>
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-            android:text="@{message}"/>
+            <fragment
+                android:id="@+id/nav_content_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                app:navGraph="@navigation/main_navigation"
+                app:defaultNavHost="true"
+            />
         </LinearLayout>
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            style="@style/Widget.MaterialComponents.NavigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+        />
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

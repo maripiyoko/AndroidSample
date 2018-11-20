@@ -5,6 +5,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import net.zuccha.a100days.a100daysofcode.databinding.ActivityMainBinding
@@ -20,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var maker: CoffeeMaker
 
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -27,8 +31,11 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         drawerLayout = binding.drawerLayout
 
+        navController = Navigation.findNavController(this, R.id.nav_content_fragment)
+
         // setup actionbar
         setSupportActionBar(binding.toolbar)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
 
         val maker = DaggerSampleComponent.builder().build().maker()
         binding.message = maker.print()
