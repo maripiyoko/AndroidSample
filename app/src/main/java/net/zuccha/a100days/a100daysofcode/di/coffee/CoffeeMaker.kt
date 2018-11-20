@@ -6,6 +6,7 @@ class CoffeeMaker @Inject constructor(
     private val heater: Heater,
     private val pump: Pump
 ) {
+    fun message() = "injected coffee maker!"
 
     fun brew() {
         heater.on()

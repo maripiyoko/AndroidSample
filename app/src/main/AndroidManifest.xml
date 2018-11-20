@@ -3,6 +3,7 @@
           package="net.zuccha.a100days.a100daysofcode">
 
     <application
+            android:name=".CodeApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
