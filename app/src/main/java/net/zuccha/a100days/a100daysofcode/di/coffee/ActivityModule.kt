@@ -6,6 +6,6 @@ import net.zuccha.a100days.a100daysofcode.MainActivity
 
 @Module
 abstract class ActivityModule {
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [FragmentBuildersModule::class])
     abstract fun contributeMainActivityInjector(): MainActivity
 }

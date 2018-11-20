@@ -5,21 +5,20 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import net.zuccha.a100days.a100daysofcode.databinding.ActivityMainBinding
 import net.zuccha.a100days.a100daysofcode.di.coffee.CoffeeMaker
-import net.zuccha.a100days.a100daysofcode.di.coffee.CoffeeShopComponent
-import net.zuccha.a100days.a100daysofcode.di.coffee.DaggerCoffeeShopComponent
-import net.zuccha.a100days.a100daysofcode.samplemodels.A
 import net.zuccha.a100days.a100daysofcode.samplemodels.DaggerSampleComponent
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
+    @Inject lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     @Inject lateinit var maker: CoffeeMaker
 
     private lateinit var drawerLayout: DrawerLayout
@@ -47,4 +46,6 @@ class MainActivity : AppCompatActivity() {
         Log.d("DEBUG", "start coffee maker")
         maker.brew()
     }
+
+    override fun supportFragmentInjector() = dispatchingAndroidInjector
 }
