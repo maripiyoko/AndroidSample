@@ -1,13 +1,20 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/code
     docker:
-      - image: debian:stretch
+      - image: circleci/android:api-28-alpha
     steps:
       - checkout
       - run:
           name: Greeting
           command: echo Hello, world.
       - run:
-          name: Print the Current Time
-          command: date
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - run:
+          name: Run Compile
+          command: ./gradlew assembleDebug
+      - run:
+          name: Run Test
+          command: ./gradlew lint test
