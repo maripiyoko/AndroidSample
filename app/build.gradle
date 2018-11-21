@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'kotlin-allopen'
+
 android {
     compileSdkVersion 28
     dataBinding {
@@ -53,4 +55,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0'
+}
+
+allOpen {
+    annotation('net.zuccha.a100days.a100daysofcode.AllOpen')
 }
