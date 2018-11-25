@@ -6,9 +6,15 @@
 
     <fragment android:id="@+id/homeFragment"
               android:name="net.zuccha.a100days.a100daysofcode.ui.HomeFragment"
-              android:label="HomeFragment" />
+              android:label="HomeFragment">
+        <action
+            android:id="@+id/to_coffee_action"
+            app:destination="@+id/coffeeMakerFragment" />
+    </fragment>
 
     <fragment android:id="@+id/coffeeMakerFragment"
               android:name="net.zuccha.a100days.a100daysofcode.ui.CoffeeMakerFragment"
-              android:label="CoffeeMakerFragment"/>
+              android:label="CoffeeMakerFragment">
+
+    </fragment>
 </navigation>
