@@ -47,5 +47,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         maker.brew()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(drawerLayout, navController)
+    }
     override fun supportFragmentInjector() = dispatchingAndroidInjector
 }
