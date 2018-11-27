@@ -15,6 +15,9 @@
     <fragment android:id="@+id/coffeeMakerFragment"
               android:name="net.zuccha.a100days.a100daysofcode.ui.CoffeeMakerFragment"
               android:label="CoffeeMakerFragment">
-
     </fragment>
+
+    <fragment android:id="@+id/lottieFragment"
+              android:name="net.zuccha.a100days.a100daysofcode.ui.LottieFragment"
+              android:label="LottieFragment"/>
 </navigation>
