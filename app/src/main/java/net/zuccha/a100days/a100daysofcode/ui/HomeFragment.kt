@@ -44,5 +44,9 @@ class HomeFragment : Fragment() {
         view.findViewById<Button>(R.id.navigate_button_one)?.setOnClickListener {
             findNavController().navigate(R.id.coffeeMakerFragment, null, options)
         }
+
+        view.findViewById<Button>(R.id.navigate_button_two)?.setOnClickListener {
+            findNavController().navigate(R.id.lottieFragment)
+        }
     }
 }
